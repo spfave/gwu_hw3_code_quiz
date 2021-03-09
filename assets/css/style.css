@@ -3,9 +3,15 @@
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+  color: #f4f4f4;
+}
+
 /* Tags */
 body {
-  color: #333;
+  color: #eee;
+  background-color: #333;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
 }
@@ -18,4 +24,14 @@ main {
 button {
   display: block;
   margin: 1rem auto;
+}
+
+/* Utility Classes */
+.btn-link {
+  display: block;
+  border: 1px solid #f4f4f4;
+  border-radius: 5px;
+  width: fit-content;
+  margin: 0.5rem auto;
+  padding: 0.5rem 1rem;
 }

@@ -1,0 +1,9 @@
+/* Landing Section */
+.landing h1 i {
+  color: #fcdc00;
+}
+
+.description {
+  max-width: 600px;
+  margin: auto;
+}
