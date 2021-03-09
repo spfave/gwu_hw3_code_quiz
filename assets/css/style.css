@@ -1,0 +1,21 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+}
+
+/* Tags */
+body {
+  color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+main {
+  max-width: 1000px;
+  margin: auto;
+}
+
+button {
+  display: block;
+  margin: 1rem auto;
+}
