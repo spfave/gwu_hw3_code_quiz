@@ -42,10 +42,10 @@ ul li {
 }
 
 .btn-link {
-  display: block;
+  display: inline-block;
   border: 1px solid #f4f4f4;
   border-radius: 5px;
   width: fit-content;
-  margin: 1rem auto;
+  margin: 0.5rem;
   padding: 0.5rem 1rem;
 }
