@@ -1,9 +1,17 @@
 /* Landing Section */
+.landing .title h1 {
+  font-size: 2rem;
+}
+
 .landing .title h1 i {
   color: #fcdc00;
 }
 
 .landing .description {
   max-width: 600px;
-  margin: auto;
+}
+
+.landing .description ul li::before {
+  font-family: "Font Awesome 5 free";
+  content: "\f1c9 \00a0\00a0";
 }
