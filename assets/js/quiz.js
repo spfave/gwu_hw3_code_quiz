@@ -81,7 +81,9 @@ const nextQuestion = () => {
 };
 
 // Checks user selected answer against correct answer
-const checkAnswer = () => {};
+const checkAnswer = (selection) => {
+  console.log(selection);
+};
 
 // Starts quiz timer
 const startTimer = (quizTime) => {
@@ -110,9 +112,18 @@ const endQuiz = () => {
 const questionCounter = document.getElementById("question-num");
 const quizTimerEl = document.getElementById("quiz-timer");
 const questionText = document.getElementById("question-text");
+const questionChoicesList = document.getElementById("choices-list");
 const questionChoices = document.querySelectorAll(".choice");
 
 // Event listener on answer choices
+questionChoicesList.addEventListener("click", (e) => {
+  const element = e.target;
+
+  // if: click is on question answer choice then check selected answer
+  if (element.matches(".choice")) {
+    checkAnswer(element);
+  }
+});
 
 // Webpage Execution:
 startQuiz();
