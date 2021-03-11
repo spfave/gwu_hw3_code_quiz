@@ -15,10 +15,23 @@ const shuffleArray = (array) => {
 
 // Functions:
 // startQuiz is called on page load
-const startQuiz = () => {};
+const startQuiz = () => {
+  getQuestions();
+};
 
 // Gets quiz questions from questions.js
-const getQuestions = () => {};
+const getQuestions = () => {
+  // questions defined global from question.js file in questionBank variable
+  // Shuffle order of questions
+  shuffleArray(questionBank);
+
+  // For each question combine correct answer and incorrect answer in single array of choices then shuffle order
+  for (const question of questionBank) {
+    question.choices = [question.answer, ...question.incorrect_answers];
+    shuffleArray(question.choices);
+    console.log(question);
+  }
+};
 
 // Renders next question to the window
 const nextQuestion = () => {};
