@@ -59,6 +59,8 @@ const nextQuestion = () => {
 
     // Increase question number by 1
     questionNum++;
+  } else {
+    endQuiz();
   }
 };
 
@@ -67,6 +69,9 @@ const checkAnswer = () => {};
 
 // Starts quiz timer
 const startTimer = () => {};
+
+// Ends quiz and routes user to quiz score display
+const endQuiz = () => {};
 
 // DOM Control:
 // DOM Selectors
