@@ -6,6 +6,7 @@ const quizTime = numQuestions * questionTime; // Total quiz time = numQs * 5 sec
 let quizTimer;
 let timeRemaining;
 let quizScore = 0;
+const questionPointVal = 10;
 
 // UTILITY FUNCTIONS:
 // Randomly shuffle an array
@@ -79,7 +80,7 @@ const nextQuestion = () => {
       questionChoices[c].textContent = question.choices[c];
     }
   } else {
-    endQuiz();
+    endQuiz(); // All Done!
   }
 };
 
@@ -88,7 +89,7 @@ const checkAnswer = (userAnswer) => {
   // if: user selected answer is the question correct answer increase quiz score
   // else: deduct time
   if (userAnswer === questionBank[questionNum].answer) {
-    quizScore += 10;
+    quizScore += questionPointVal;
     console.log("correct");
   } else {
     timeRemaining = timeRemaining > 5 ? (timeRemaining -= questionTime) : 0;
@@ -110,8 +111,8 @@ const startTimer = (quizTime) => {
     if (timeRemaining > 0) {
       quizTimerEl.textContent = renderTime(--timeRemaining);
     } else {
-      quizTimerEl.textContent = renderTime(0);
-      endQuiz();
+      quizTimerEl.textContent = renderTime(timeRemaining);
+      endQuiz(); // Times Up
     }
   }, 1000);
 };
@@ -119,7 +120,10 @@ const startTimer = (quizTime) => {
 // Ends quiz and routes user to quiz score display
 const endQuiz = () => {
   clearInterval(quizTimer);
-  console.log("Quiz Over");
+  quizTimerEl.textContent = renderTime(timeRemaining);
+  quizScore += timeRemaining;
+
+  console.log(`Quiz Score; ${quizScore}`);
 };
 
 // DOM CONTROL:
