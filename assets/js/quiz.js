@@ -1,12 +1,13 @@
 // VARIABLES:
+const questionTime = 5;
+const questionPointVal = 10;
+
 const numQuestions = questionBank.length;
 let questionNum = -1;
-const questionTime = 5;
 const quizTime = numQuestions * questionTime; // Total quiz time = numQs * 5 seconds/question
 let quizTimer;
 let timeRemaining;
 let quizScore = 0;
-const questionPointVal = 10;
 
 // UTILITY FUNCTIONS:
 // Randomly shuffle an array
