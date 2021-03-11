@@ -1,4 +1,6 @@
-// Utility Functions
+// Variables:
+
+// Utility Functions:
 const shuffleArray = (array) => {
   /**
    * Return random shuffle of array: uses Durstenfeld shuffle (Fisher-Yates) algorithm
@@ -11,6 +13,25 @@ const shuffleArray = (array) => {
   return array;
 };
 
-// Functions
+// Functions:
+// startQuiz is called on page load
+const startQuiz = () => {};
 
-// DOM Control
+// Gets quiz questions from questions.js
+const getQuestions = () => {};
+
+// Renders next question to the window
+const nextQuestion = () => {};
+
+// Checks user selected answer against correct answer
+const checkAnswer = () => {};
+
+// Starts quiz timer
+const startTimer = () => {};
+
+// DOM Control:
+// DOM Selectors
+// Event listener on answer choices
+
+// Webpage Execution:
+startQuiz();
