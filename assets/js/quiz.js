@@ -1,10 +1,12 @@
 // Variables:
 const numQuestions = questionBank.length;
 let questionNum = 0;
-let quizTime = numQuestions * 5; // Total quiz time = numQs * 5 seconds/question
+const quizTime = numQuestions * 5; // Total quiz time = numQs * 5 seconds/question
+let quizTimer;
 let timeRemaining;
 
 // Utility Functions:
+// Randomly shuffle an array
 const shuffleArray = (array) => {
   /**
    * Return random shuffle of array: uses Durstenfeld shuffle (Fisher-Yates) algorithm
@@ -17,6 +19,7 @@ const shuffleArray = (array) => {
   return array;
 };
 
+// Return a time in seconds in format mm:ss
 const renderTime = (timeSeconds) => {
   const minutes = Math.floor(timeSeconds / 60);
   let seconds = timeSeconds % 60;
@@ -55,7 +58,8 @@ const getQuestions = () => {
 
 // Renders next question to the window
 const nextQuestion = () => {
-  // if questions remain in question bank show next question
+  // if: questions remain in question bank show next question
+  // else: end the quiz
   if (questionNum < numQuestions) {
     // Set question number in header
     questionCounter.textContent = questionNum + 1;
@@ -86,14 +90,10 @@ const startTimer = (quizTime) => {
   quizTimerEl.textContent = renderTime(timeRemaining);
 
   // Decrement time remaining every second
-  const quizTimer = setInterval(() => {
-    timeRemaining--;
+  quizTimer = setInterval(() => {
+    quizTimerEl.textContent = renderTime(--timeRemaining);
 
-    if (timeRemaining > 0) {
-      quizTimerEl.textContent = renderTime(timeRemaining);
-    } else {
-      quizTimerEl.textContent = renderTime(timeRemaining);
-      clearInterval(quizTimer);
+    if (timeRemaining === 0) {
       endQuiz();
     }
   }, 1000);
@@ -101,6 +101,7 @@ const startTimer = (quizTime) => {
 
 // Ends quiz and routes user to quiz score display
 const endQuiz = () => {
+  clearInterval(quizTimer);
   console.log("Quiz Over");
 };
 
