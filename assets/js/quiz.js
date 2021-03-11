@@ -1,11 +1,13 @@
-// Variables:
+// VARIABLES:
 const numQuestions = questionBank.length;
-let questionNum = 0;
-const quizTime = numQuestions * 5; // Total quiz time = numQs * 5 seconds/question
+let questionNum = -1;
+const questionTime = 5;
+const quizTime = numQuestions * questionTime; // Total quiz time = numQs * 5 seconds/question
 let quizTimer;
 let timeRemaining;
+let quizScore = 0;
 
-// Utility Functions:
+// UTILITY FUNCTIONS:
 // Randomly shuffle an array
 const shuffleArray = (array) => {
   /**
@@ -27,7 +29,7 @@ const renderTime = (timeSeconds) => {
   return `${minutes}:${seconds}`;
 };
 
-// Functions:
+// FUNCTIONS:
 // startQuiz is called on page load
 const startQuiz = () => {
   // Get list of questions for quiz and prepare for user
@@ -58,6 +60,9 @@ const getQuestions = () => {
 
 // Renders next question to the window
 const nextQuestion = () => {
+  // Increase question number by 1
+  questionNum++;
+
   // if: questions remain in question bank show next question
   // else: end the quiz
   if (questionNum < numQuestions) {
@@ -70,19 +75,28 @@ const nextQuestion = () => {
 
     // Set question answer choices text
     for (let c = 0; c < question.choices.length; c++) {
+      questionChoices[c].dataset.text = question.choices[c];
       questionChoices[c].textContent = question.choices[c];
     }
-
-    // Increase question number by 1
-    questionNum++;
   } else {
     endQuiz();
   }
 };
 
 // Checks user selected answer against correct answer
-const checkAnswer = (selection) => {
-  console.log(selection);
+const checkAnswer = (userAnswer) => {
+  // if: user selected answer is the question correct answer increase quiz score
+  // else: deduct time
+  if (userAnswer === questionBank[questionNum].answer) {
+    quizScore += 10;
+    console.log("correct");
+  } else {
+    timeRemaining = timeRemaining > 5 ? (timeRemaining -= questionTime) : 0;
+    console.log("incorrect");
+  }
+
+  // Go to next question
+  nextQuestion();
 };
 
 // Starts quiz timer
@@ -107,7 +121,7 @@ const endQuiz = () => {
   console.log("Quiz Over");
 };
 
-// DOM Control:
+// DOM CONTROL:
 // DOM Selectors
 const questionCounter = document.getElementById("question-num");
 const quizTimerEl = document.getElementById("quiz-timer");
@@ -121,9 +135,9 @@ questionChoicesList.addEventListener("click", (e) => {
 
   // if: click is on question answer choice then check selected answer
   if (element.matches(".choice")) {
-    checkAnswer(element);
+    checkAnswer(element.dataset.text);
   }
 });
 
-// Webpage Execution:
+// WEBPAGE EXECUTION:
 startQuiz();
