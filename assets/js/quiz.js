@@ -107,9 +107,10 @@ const startTimer = (quizTime) => {
 
   // Decrement time remaining every second
   quizTimer = setInterval(() => {
-    quizTimerEl.textContent = renderTime(--timeRemaining);
-
-    if (timeRemaining === 0) {
+    if (timeRemaining > 0) {
+      quizTimerEl.textContent = renderTime(--timeRemaining);
+    } else {
+      quizTimerEl.textContent = renderTime(0);
       endQuiz();
     }
   }, 1000);
