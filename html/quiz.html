@@ -12,21 +12,21 @@
 
 <body>
     <header>
-        <p><span id="num-questions">10</span> questions remaining</p>
-        <p><span id="quiz_timer">1:00</span> time remaining</p>
+        <p>question <span id="question-num">#</span>/<span id="num-questions">#</span></p>
+        <p>time remaining <span id="quiz-timer">#:##</span></p>
     </header>
 
     <main class="flex-col">
         <section class="question-card">
             <div class="question">
-                <h4>Question 1</h4>
+                <h4 id="question-text">Question text</h4>
             </div>
-            <div class="answers">
-                <ul>
-                    <li>answer 1</li>
-                    <li>answer 2</li>
-                    <li>answer 3</li>
-                    <li>answer 4</li>
+            <div class="choices">
+                <ul id="choices-list">
+                    <li class="choice">choice 1</li>
+                    <li class="choice">choice 2</li>
+                    <li class="choice">choice 3</li>
+                    <li class="choice">choice 4</li>
                 </ul>
             </div>
         </section>

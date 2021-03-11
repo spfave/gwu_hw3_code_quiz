@@ -13,12 +13,8 @@ const questionBank = [
   {
     question:
       "The condition in an if/else statement is enclosed within ______.",
-    answer: "parentheses ()",
-    incorrect_answers: [
-      "square brackets []",
-      "curly brackets {}",
-      "angle brackets <>",
-    ],
+    answer: "parentheses",
+    incorrect_answers: ["square brackets", "curly brackets", "angle brackets"],
   },
   {
     question:
