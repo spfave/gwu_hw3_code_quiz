@@ -1,6 +1,8 @@
 // Variables:
 const numQuestions = questionBank.length;
 let questionNum = 0;
+let quizTime = numQuestions * 5; // Total quiz time = numQs * 5 seconds/question
+let timeRemaining;
 
 // Utility Functions:
 const shuffleArray = (array) => {
@@ -15,6 +17,13 @@ const shuffleArray = (array) => {
   return array;
 };
 
+const renderTime = (timeSeconds) => {
+  const minutes = Math.floor(timeSeconds / 60);
+  let seconds = timeSeconds % 60;
+  seconds = seconds < 10 ? `0${seconds}` : seconds;
+  return `${minutes}:${seconds}`;
+};
+
 // Functions:
 // startQuiz is called on page load
 const startQuiz = () => {
@@ -26,6 +35,9 @@ const startQuiz = () => {
 
   // get next (first) question
   nextQuestion();
+
+  // Start quiz timer
+  startTimer(quizTime);
 };
 
 // Gets quiz questions from questions.js
@@ -68,15 +80,34 @@ const nextQuestion = () => {
 const checkAnswer = () => {};
 
 // Starts quiz timer
-const startTimer = () => {};
+const startTimer = (quizTime) => {
+  // Set and display initial time alloted to complete quiz
+  timeRemaining = quizTime;
+  quizTimerEl.textContent = renderTime(timeRemaining);
+
+  // Decrement time remaining every second
+  const quizTimer = setInterval(() => {
+    timeRemaining--;
+
+    if (timeRemaining > 0) {
+      quizTimerEl.textContent = renderTime(timeRemaining);
+    } else {
+      quizTimerEl.textContent = renderTime(timeRemaining);
+      clearInterval(quizTimer);
+      endQuiz();
+    }
+  }, 1000);
+};
 
 // Ends quiz and routes user to quiz score display
-const endQuiz = () => {};
+const endQuiz = () => {
+  console.log("Quiz Over");
+};
 
 // DOM Control:
 // DOM Selectors
 const questionCounter = document.getElementById("question-num");
-const quizTimer = document.getElementById("quiz-timer");
+const quizTimerEl = document.getElementById("quiz-timer");
 const questionText = document.getElementById("question-text");
 const questionChoices = document.querySelectorAll(".choice");
 
