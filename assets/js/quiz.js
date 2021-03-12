@@ -82,7 +82,7 @@ const nextQuestion = () => {
       questionChoices[c].textContent = question.choices[c];
     }
   } else {
-    endQuiz(); // All Done!
+    endQuiz("All Done!");
   }
 };
 
@@ -92,11 +92,9 @@ const checkAnswer = (userAnswer) => {
   // else: deduct time
   if (userAnswer === questionBank[questionNum].answer) {
     numQuestionRight++;
-    console.log("correct");
   } else {
     timeRemaining =
       timeRemaining > questionTime ? (timeRemaining -= questionTime) : 0;
-    console.log("incorrect");
   }
 
   // Go to next question
@@ -115,27 +113,45 @@ const startTimer = (quizTime) => {
       quizTimerEl.textContent = renderTime(--timeRemaining);
     } else {
       quizTimerEl.textContent = renderTime(timeRemaining);
-      endQuiz(); // Times Up
+      endQuiz("Times Up");
     }
   }, 1000);
 };
 
 // Ends quiz and routes user to quiz score display
-const endQuiz = () => {
+const endQuiz = (quizMessage) => {
+  // End quiz timer and compute quiz score
   clearInterval(quizTimer);
   quizTimerEl.textContent = renderTime(timeRemaining);
   quizScore += numQuestionRight * questionPointVal + timeRemaining;
 
-  console.log(`Quiz Score; ${quizScore}`);
+  // Show quiz results with submission form
+  showQuizResult(quizMessage);
+};
+
+// Change quiz page display
+const showQuizResult = (quizMessage) => {
+  // Hide quiz header and question card
+  questionCard.hidden = true;
+
+  // Show quiz results with submission form
+  quizResult.hidden = false;
+  quizMsgEl.textContent = quizMessage;
+  quizScoreEl.textContent = quizScore;
 };
 
 // DOM CONTROL:
 // DOM Selectors
 const questionCounter = document.getElementById("question-num");
 const quizTimerEl = document.getElementById("quiz-timer");
+const questionCard = document.getElementById("question-card");
 const questionText = document.getElementById("question-text");
 const questionChoicesList = document.getElementById("choices-list");
 const questionChoices = document.querySelectorAll(".choice");
+
+const quizResult = document.getElementById("quiz-result");
+const quizMsgEl = document.getElementById("quiz-message");
+const quizScoreEl = document.getElementById("quiz-score");
 
 // Event listener on answer choices
 questionChoicesList.addEventListener("click", (e) => {
