@@ -3,10 +3,28 @@
 const displayScores = () => {
   const scores = getScores();
   console.log(scores);
+
+  // Render each score to score table
+  for (const [i, score] of scores.entries()) {
+    displayScore(i, score);
+  }
 };
 
 // Create and add score to scores table
-const displayScore = () => {};
+const displayScore = (place, score) => {
+  const scoresTable = document.getElementById("scores-table");
+
+  // Create score table row and append to table
+  const scoreRow = document.createElement("tr");
+  scoreRow.innerHTML = `
+    <td>${place}</td>
+    <td>${score.initials}</td>
+    <td>${score.quizScore}</td>
+    <td>${score.numCorrect}</td>
+    <td>${score.quizTime}</td>
+  `;
+  scoresTable.appendChild(scoreRow);
+};
 
 // Get scores from local storage
 const getScores = () => {
@@ -20,13 +38,11 @@ const getScores = () => {
   } else {
     scores = JSON.parse(scores);
   }
-
   return scores;
 };
 
 // DOM CONTROL:
 // Dom Selectors
-const scoresTable = document.getElementById("scores-table");
 
 // WEBPAGE EXECUTION:
 displayScores();

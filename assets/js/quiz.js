@@ -172,8 +172,8 @@ btnSubmitScore.addEventListener("click", (e) => {
   const initials = document.getElementById("initials").value;
   quizResult = {
     initials: initials,
-    quizScore: quizScore,
-    numQuestionRight: numQuestionRight,
+    quizScore: `${quizScore}`,
+    numCorrect: `${numQuestionRight}/${numQuestions}`,
     quizTime: renderTime(quizTime - timeRemaining),
   };
 
