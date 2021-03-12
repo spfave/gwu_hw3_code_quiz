@@ -135,7 +135,7 @@ const showQuizResult = (quizMessage) => {
   questionCard.hidden = true;
 
   // Show quiz results with submission form
-  quizResult.hidden = false;
+  quizResultEl.hidden = false;
   quizMsgEl.textContent = quizMessage;
   quizScoreEl.textContent = quizScore;
 };
@@ -149,9 +149,10 @@ const questionText = document.getElementById("question-text");
 const questionChoicesList = document.getElementById("choices-list");
 const questionChoices = document.querySelectorAll(".choice");
 
-const quizResult = document.getElementById("quiz-result");
+const quizResultEl = document.getElementById("quiz-result");
 const quizMsgEl = document.getElementById("quiz-message");
 const quizScoreEl = document.getElementById("quiz-score");
+const btnSubmitScore = document.getElementById("btn-submit-score");
 
 // Event listener on answer choices
 questionChoicesList.addEventListener("click", (e) => {
@@ -161,6 +162,23 @@ questionChoicesList.addEventListener("click", (e) => {
   if (element.matches(".choice")) {
     checkAnswer(element.dataset.text);
   }
+});
+
+// Event listener on score submission
+btnSubmitScore.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  // Create quizResult object
+  const initials = document.getElementById("initials").value;
+  quizResult = {
+    initials: initials,
+    quizScore: quizScore,
+    numQuestionRight: numQuestionRight,
+    quizTime: renderTime(quizTime - timeRemaining),
+  };
+
+  // Submit score to local storage
+  saveQuizResult(quizResult);
 });
 
 // WEBPAGE EXECUTION:
