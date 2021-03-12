@@ -2,7 +2,6 @@
 // Render table of scores
 const displayScores = () => {
   const scores = getScores();
-  console.log(scores);
 
   // Render each score to score table
   for (const [i, score] of scores.entries()) {
@@ -43,7 +42,8 @@ const getScores = () => {
 
 // Clear stored scores list
 const clearScores = () => {
-  localStorage.setItem("scores", "[]");
+  localStorage.removeItem("scores");
+  displayScores();
 };
 
 // DOM CONTROL:
