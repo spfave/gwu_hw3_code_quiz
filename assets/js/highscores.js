@@ -41,8 +41,19 @@ const getScores = () => {
   return scores;
 };
 
+// Clear stored scores list
+const clearScores = () => {
+  localStorage.setItem("scores", "[]");
+};
+
 // DOM CONTROL:
-// Dom Selectors
+// DOM Selectors
+const btnClear = document.getElementById("btn-clear");
+
+// Event listener on clear scores button
+btnClear.addEventListener("click", () => {
+  clearScores();
+});
 
 // WEBPAGE EXECUTION:
 displayScores();
