@@ -3,10 +3,11 @@ const questionTime = 5;
 const questionPointVal = 10;
 
 const numQuestions = questionBank.length;
-let questionNum = -1;
 const quizTime = numQuestions * questionTime; // Total quiz time = numQs * 5 seconds/question
 let quizTimer;
 let timeRemaining;
+let questionNum = -1;
+let numQuestionRight = 0;
 let quizScore = 0;
 
 // UTILITY FUNCTIONS:
@@ -90,10 +91,11 @@ const checkAnswer = (userAnswer) => {
   // if: user selected answer is the question correct answer increase quiz score
   // else: deduct time
   if (userAnswer === questionBank[questionNum].answer) {
-    quizScore += questionPointVal;
+    numQuestionRight++;
     console.log("correct");
   } else {
-    timeRemaining = timeRemaining > 5 ? (timeRemaining -= questionTime) : 0;
+    timeRemaining =
+      timeRemaining > questionTime ? (timeRemaining -= questionTime) : 0;
     console.log("incorrect");
   }
 
@@ -122,7 +124,7 @@ const startTimer = (quizTime) => {
 const endQuiz = () => {
   clearInterval(quizTimer);
   quizTimerEl.textContent = renderTime(timeRemaining);
-  quizScore += timeRemaining;
+  quizScore += numQuestionRight * questionPointVal + timeRemaining;
 
   console.log(`Quiz Score; ${quizScore}`);
 };
