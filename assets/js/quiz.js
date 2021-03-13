@@ -66,8 +66,9 @@ const nextQuestion = () => {
   // Increase question number by 1
   questionNum++;
 
-  // if: questions remain in question bank show next question
-  // else: end the quiz
+  // if: questions remain in question bank and there is still time show next question
+  // else if: time remaining is zero end quiz time ran out
+  // else: end quiz finished answering all questions
   if (questionNum < numQuestions && timeRemaining > 0) {
     // Set question number in header
     questionCounter.textContent = questionNum + 1;
@@ -81,6 +82,8 @@ const nextQuestion = () => {
       questionChoices[c].dataset.text = question.choices[c];
       questionChoices[c].textContent = question.choices[c];
     }
+  } else if (timeRemaining === 0) {
+    endQuiz("Times Up");
   } else {
     endQuiz("All Done!");
   }
@@ -97,6 +100,7 @@ const checkAnswer = (userAnswer) => {
     timeRemaining =
       timeRemaining > questionTime ? (timeRemaining -= questionTime) : 0;
     showAlert("Incorrect", "danger");
+    showTimeDeduction(`-${questionTime}`);
   }
 
   // Go to next question
@@ -160,8 +164,21 @@ const showAlert = (message, alertType) => {
 
   // Timeout alert message after 1 second
   setTimeout(() => {
-    document.querySelector(".alert").remove();
+    document.querySelectorAll(".alert").forEach((e) => {
+      e.remove();
+    });
   }, 1000);
+};
+
+const showTimeDeduction = (message) => {
+  // Create alert p
+  const alert = document.createElement("p");
+  alert.className = `alert text-danger`;
+  alert.textContent = message;
+
+  // Insert alert in DOM
+  const elmnt = document.getElementById("quiz-time");
+  elmnt.insertAdjacentElement("afterend", alert);
 };
 
 // DOM CONTROL:
