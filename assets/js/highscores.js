@@ -1,11 +1,12 @@
 // FUNCTIONS:
 // Render table of scores
 const displayScores = () => {
+  checkNewScore();
   const scores = getScores();
 
   // Render each score to score table
   for (const [i, score] of scores.entries()) {
-    displayScore(i, score);
+    displayScore(i + 1, score);
   }
 };
 
@@ -25,6 +26,20 @@ const displayScore = (place, score) => {
   scoresTable.appendChild(scoreRow);
 };
 
+// Check if new score submission exists
+const checkNewScore = () => {
+  // get new score in session storage
+  const newScore = sessionStorage.getItem("newScore");
+
+  // if: new score submission exists in session storage add to scores list
+  if (newScore !== null) {
+    console.log("new Score!");
+
+    addScore(JSON.parse(newScore));
+    sessionStorage.removeItem("newScore");
+  }
+};
+
 // Get scores from local storage
 const getScores = () => {
   // Get scores stored in local storage
@@ -39,9 +54,6 @@ const getScores = () => {
   }
   return scores;
 };
-
-// Save scores to local storage
-// const saveScores = () => {}
 
 // Add score to list of scores
 const addScore = (score) => {
@@ -70,6 +82,8 @@ const btnClear = document.getElementById("btn-clear");
 
 // Event listener on clear scores button
 btnClear.addEventListener("click", () => {
+  console.log("Clear scores");
+
   clearScores();
 });
 
