@@ -41,11 +41,11 @@ const startQuiz = () => {
   // Set total number of questions in header
   document.getElementById("num-questions").textContent = numQuestions;
 
-  // get next (first) question
-  nextQuestion();
-
   // Start quiz timer
   startTimer(quizTime);
+
+  // get next (first) question
+  nextQuestion();
 };
 
 // Gets quiz questions from questions.js
@@ -68,7 +68,7 @@ const nextQuestion = () => {
 
   // if: questions remain in question bank show next question
   // else: end the quiz
-  if (questionNum < numQuestions) {
+  if (questionNum < numQuestions && timeRemaining > 0) {
     // Set question number in header
     questionCounter.textContent = questionNum + 1;
     question = questionBank[questionNum];
@@ -154,7 +154,7 @@ const showAlert = (message, alertType) => {
   alert.className = `alert alert-${alertType}`;
   alert.appendChild(document.createTextNode(message));
 
-  // insert alert div in DOM
+  // Insert alert div in DOM
   const elmnt = document.getElementById("quiz-result");
   elmnt.parentElement.insertBefore(alert, elmnt.nextElementSibling);
 
