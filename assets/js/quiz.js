@@ -184,6 +184,9 @@ btnSubmitScore.addEventListener("click", (e) => {
 
   // Submit score to local storage
   saveQuizResult(quizResult);
+
+  // Redirect to quiz scores page
+  location.replace("/html/highscores.html");
 });
 
 // WEBPAGE EXECUTION:
