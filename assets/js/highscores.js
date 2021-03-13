@@ -31,10 +31,8 @@ const checkNewScore = () => {
   // get new score in session storage
   const newScore = sessionStorage.getItem("newScore");
 
-  // if: new score submission exists in session storage add to scores list
+  // if: new score submission exists in session storage add to scores list then remove from session storage
   if (newScore !== null) {
-    console.log("new Score!");
-
     addScore(JSON.parse(newScore));
     sessionStorage.removeItem("newScore");
   }
@@ -72,8 +70,9 @@ const addScore = (score) => {
 
 // Clear stored scores list
 const clearScores = () => {
+  // Remove scores list from storage and set score table body to empty content
   localStorage.removeItem("scores");
-  displayScores();
+  document.getElementById("scores-table").innerHTML = "";
 };
 
 // DOM CONTROL:
@@ -82,8 +81,6 @@ const btnClear = document.getElementById("btn-clear");
 
 // Event listener on clear scores button
 btnClear.addEventListener("click", () => {
-  console.log("Clear scores");
-
   clearScores();
 });
 
