@@ -92,9 +92,11 @@ const checkAnswer = (userAnswer) => {
   // else: deduct time
   if (userAnswer === questionBank[questionNum].answer) {
     numQuestionRight++;
+    showAlert("Correct", "success");
   } else {
     timeRemaining =
       timeRemaining > questionTime ? (timeRemaining -= questionTime) : 0;
+    showAlert("Incorrect", "danger");
   }
 
   // Go to next question
@@ -143,6 +145,23 @@ const showQuizResult = (quizMessage) => {
 // Save quiz result to session storage
 const saveQuizResult = (quizResult) => {
   sessionStorage.setItem("newScore", JSON.stringify(quizResult));
+};
+
+// Show answer alert
+const showAlert = (message, alertType) => {
+  // Create alert div
+  const alert = document.createElement("div");
+  alert.className = `alert alert-${alertType}`;
+  alert.appendChild(document.createTextNode(message));
+
+  // insert alert div in DOM
+  const elmnt = document.getElementById("quiz-result");
+  elmnt.parentElement.insertBefore(alert, elmnt.nextElementSibling);
+
+  // Timeout alert message after 1 second
+  setTimeout(() => {
+    document.querySelector(".alert").remove();
+  }, 1000);
 };
 
 // DOM CONTROL:
