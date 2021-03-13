@@ -58,12 +58,12 @@ const getScores = () => {
 // Add score to list of scores
 const addScore = (score) => {
   // Get current scores list and append score
-  const scores = getScores();
+  let scores = getScores();
   scores.push(score);
 
   // Sort scores based on quiz score
   scores.sort((s1, s2) => {
-    s1.quizScore - s2.quizScore;
+    return s2.quizScore - s1.quizScore;
   });
 
   // Write score list to storage
