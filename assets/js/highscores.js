@@ -40,6 +40,24 @@ const getScores = () => {
   return scores;
 };
 
+// Save scores to local storage
+// const saveScores = () => {}
+
+// Add score to list of scores
+const addScore = (score) => {
+  // Get current scores list and append score
+  const scores = getScores();
+  scores.push(score);
+
+  // Sort scores based on quiz score
+  scores.sort((s1, s2) => {
+    s1.quizScore - s2.quizScore;
+  });
+
+  // Write score list to storage
+  localStorage.setItem("scores", JSON.stringify(scores));
+};
+
 // Clear stored scores list
 const clearScores = () => {
   localStorage.removeItem("scores");
