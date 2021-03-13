@@ -140,6 +140,11 @@ const showQuizResult = (quizMessage) => {
   quizScoreEl.textContent = quizScore;
 };
 
+// Save quiz result to session storage
+const saveQuizResult = (quizResult) => {
+  sessionStorage.setItem("newScore", JSON.stringify(quizResult));
+};
+
 // DOM CONTROL:
 // DOM Selectors
 const questionCounter = document.getElementById("question-num");
