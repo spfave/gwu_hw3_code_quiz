@@ -4,7 +4,7 @@
 }
 
 /* Variables */
-:root{
+:root {
   --color-text-dark: #333;
   --color-text-light: #666;
   --color-theme: #fcdc00;
@@ -12,38 +12,38 @@
 }
 
 /* Elements */
-body{
+body {
   color: #f3f3f3;
 }
 
 /* Utility Classes */
-.contain-max{
+.contain-max {
   max-width: 600px;
 }
 
 /* Buttons */
-.btn{
+.btn {
   font-weight: bold;
 }
 
-.btn-primary{
+.btn-primary {
   background-color: var(--color-theme);
   border-color: var(--color-theme);
-  color: var(--color-text-dark)
+  color: var(--color-text-dark);
 }
 
-.btn-primary:hover{
+.btn-primary:hover {
   background-color: var(--color-theme-fade);
   border-color: var(--color-theme-fade);
   color: var(--color-text-dark);
 }
 
-.btn-outline-primary{
+.btn-outline-primary {
   color: var(--color-theme);
   border-color: var(--color-theme);
 }
 
-.btn-outline-primary:hover{
+.btn-outline-primary:hover {
   background-color: transparent;
   border-color: var(--color-theme-fade);
   color: var(--color-theme-fade);
