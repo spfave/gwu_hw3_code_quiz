@@ -6,45 +6,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS Quiz</title>
-    <!-- Bootswatch Theme Bootstrap theme -->
-    <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="../assets/img/test-quiz.svg" type="image/x-icon">
+    <!-- Bootswatch Darkly theme - Bootstrap -->
+    <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/quiz.css">
 </head>
 
 <body>
-    <header>
-        <p>question <span id="question-num">#</span>/<span id="num-questions">#</span></p>
-        <p id="quiz-time">time remaining <span id="quiz-timer">#:##</span></p>
+    <header class="navbar d-flex justify-content-center">
+        <p class="navbar-text mr-5">question &nbsp; <span id="question-num">#</span>/<span id="num-questions">#</span>
+        </p>
+        <p id="quiz-time" class="navbar-text ml-5">time remaining &nbsp; <span id="quiz-timer">#:##</span></p>
     </header>
 
-    <main class="flex-col">
+    <main class="container contain-max">
         <!-- Questions -->
-        <section id="question-card">
-            <div class="question">
+        <section id="question-card" class="card">
+            <div class="card-header question">
                 <h4 id="question-text">Question text</h4>
             </div>
-            <div id="choices">
-                <ul id="choices-list">
-                    <li class="choice" data-text="">choice 1</li>
-                    <li class="choice" data-text="">choice 2</li>
-                    <li class="choice" data-text="">choice 3</li>
-                    <li class="choice" data-text="">choice 4</li>
+            <div class="card-body">
+                <ul id="choices-list" class="list-group">
+                    <li class="list-group-item list-group-item-action choice" data-text="">choice 1</li>
+                    <li class="list-group-item list-group-item-action choice" data-text="">choice 2</li>
+                    <li class="list-group-item list-group-item-action choice" data-text="">choice 3</li>
+                    <li class="list-group-item list-group-item-action choice" data-text="">choice 4</li>
                 </ul>
             </div>
         </section>
 
         <!-- Quiz Results -->
-        <section id="quiz-result" hidden>
-            <div class="title">
-                <h2 id="quiz-message">All Done!</h2>
-                <h4>Quiz score: <span id="quiz-score">100</span></h4>
+        <section id="quiz-result" class="text-center" hidden>
+            <div class="my-4">
+                <h2 id="quiz-message"></h2>
+                <h4>Quiz score: <span id="quiz-score"></span></h4>
             </div>
 
-            <form action="">
-                <label for="initials">Record your score</label>
-                <input type="text" id="initials" name="initials" placeholder="Enter your initials">
-                <button type="submit" id="btn-submit-score">Submit Score</button>
+            <form action="" class="my-2">
+                <div class="form-group">
+                    <label for="initials" class="form-control">Record your score</label>
+                    <input type="text" id="initials" class="form-control text-center" name="initials"
+                        placeholder="Enter your initials">
+                </div>
+                <button type="submit" id="btn-submit-score" class="btn btn-primary">Submit Score</button>
             </form>
         </section>
     </main>

@@ -116,6 +116,9 @@ const startTimer = (quizTime) => {
   // Decrement time remaining every second
   quizTimer = setInterval(() => {
     if (timeRemaining > 0) {
+      if (timeRemaining === 6) {
+        quizTimerEl.classList.add("text-danger");
+      }
       quizTimerEl.textContent = renderTime(--timeRemaining);
     } else {
       quizTimerEl.textContent = renderTime(timeRemaining);
@@ -155,7 +158,7 @@ const saveQuizResult = (quizResult) => {
 const showAlert = (message, alertType) => {
   // Create alert div
   const alert = document.createElement("div");
-  alert.className = `alert alert-${alertType}`;
+  alert.className = `alert alert-${alertType} mt-4`;
   alert.appendChild(document.createTextNode(message));
 
   // Insert alert div in DOM
@@ -173,7 +176,7 @@ const showAlert = (message, alertType) => {
 const showTimeDeduction = (message) => {
   // Create alert p
   const alert = document.createElement("p");
-  alert.className = `alert text-danger`;
+  alert.className = `alert text-danger navbar-text m-0 py-2`;
   alert.textContent = message;
 
   // Insert alert in DOM
