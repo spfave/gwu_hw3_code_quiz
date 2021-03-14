@@ -158,7 +158,7 @@ const saveQuizResult = (quizResult) => {
 const showAlert = (message, alertType) => {
   // Create alert div
   const alert = document.createElement("div");
-  alert.className = `alert alert-${alertType} mt-4`;
+  alert.className = `alert alert-${alertType} text-center mt-4`;
   alert.appendChild(document.createTextNode(message));
 
   // Insert alert div in DOM
@@ -212,8 +212,14 @@ questionChoicesList.addEventListener("click", (e) => {
 btnSubmitScore.addEventListener("click", (e) => {
   e.preventDefault();
 
-  // Create quizResult object
+  // Initials entry validations
   const initials = document.getElementById("initials").value;
+  if (initials.length !== 2) {
+    showAlert("Enter two letter initials", "danger");
+    return;
+  }
+
+  // Create quizResult object
   quizResult = {
     initials: initials,
     quizScore: `${quizScore}`,
