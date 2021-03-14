@@ -197,6 +197,7 @@ const quizResultEl = document.getElementById("quiz-result");
 const quizMsgEl = document.getElementById("quiz-message");
 const quizScoreEl = document.getElementById("quiz-score");
 const btnSubmitScore = document.getElementById("btn-submit-score");
+const btnTryAgain = document.getElementById("btn-try-again");
 
 // Event listener on answer choices
 questionChoicesList.addEventListener("click", (e) => {
@@ -232,6 +233,11 @@ btnSubmitScore.addEventListener("click", (e) => {
 
   // Redirect to quiz scores page
   location.replace("/html/highscores.html");
+});
+
+// Event listener on try again
+btnTryAgain.addEventListener("click", () => {
+  location.replace("/");
 });
 
 // WEBPAGE EXECUTION:
