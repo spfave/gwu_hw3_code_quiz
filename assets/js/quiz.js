@@ -235,10 +235,5 @@ btnSubmitScore.addEventListener("click", (e) => {
   location.replace("/html/highscores.html");
 });
 
-// Event listener on try again
-btnTryAgain.addEventListener("click", () => {
-  location.replace("/");
-});
-
 // WEBPAGE EXECUTION:
 startQuiz();
