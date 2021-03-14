@@ -232,7 +232,10 @@ btnSubmitScore.addEventListener("click", (e) => {
   saveQuizResult(quizResult);
 
   // Redirect to quiz scores page
-  location.replace("/javascript-code-quiz/html/highscores.html");
+  // location.replace("/html/highscores.html");
+  location.replace(
+    "https://spfave.github.io/javascript-code-quiz/html/highscores.html"
+  );
 });
 
 // WEBPAGE EXECUTION:
