@@ -1,17 +1,51 @@
-/* Landing Section */
-.landing .title h1 {
-  font-size: 2rem;
+/* Variables */
+:root{
+  --color-text-dark: #333;
+  --color-text-light: #666;
+
+  --color-theme: #fcdc00;
+  --color-theme-fade: #fcda005d;
 }
 
-.landing .title h1 i {
-  color: #fcdc00;
-}
-
-.landing .description {
+/* Utility Classes */
+.contain-max{
   max-width: 600px;
 }
 
-.landing .description ul li::before {
-  font-family: "Font Awesome 5 free";
-  content: "\f1c9 \00a0\00a0";
+/* Elements */
+body{
+  color: #f3f3f3;
+}
+
+/* Jumbotron */
+.jumbotron h1 i{
+  color: var(--color-theme);
+}
+
+/* Buttons */
+.btn{
+  font-weight: bold;
+}
+
+.btn-primary{
+  background-color: var(--color-theme);
+  border-color: var(--color-theme);
+  color: var(--color-text-dark)
+}
+
+.btn-primary:hover{
+  background-color: var(--color-theme-fade);
+  border-color: var(--color-theme-fade);
+  color: var(--color-text-dark);
+}
+
+.btn-outline-primary{
+  color: var(--color-theme);
+  border-color: var(--color-theme);
+}
+
+.btn-outline-primary:hover{
+  background-color: transparent;
+  border-color: var(--color-theme-fade);
+  color: var(--color-theme-fade);
 }

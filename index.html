@@ -6,32 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript Code Quiz</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./assets/img/test-quiz.svg" type="image/x-icon">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
         crossorigin="anonymous" />
+    <!-- Bootswatch Flatly theme - Bootstrap -->
+    <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css">
     <!-- CSS -->
-    <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- <link rel="stylesheet" href="./assets/css/style.css"> -->
     <link rel="stylesheet" href="./assets/css/index.css">
 </head>
 
 <body>
-    <main class="landing flex-col">
-        <section class="title center">
-            <h1><i class="fab fa-js-square fa-2x"></i> JavaScript Code Quiz</h1>
-            <h3>Test your JavaScript fundamentals</h3>
-        </section>
+    <main>
+        <div class="jumbotron jumbotron-fluid">
+            <section class="container contain-max text-center">
+                <h1 class="font-weight-bold"><i class="fab fa-js-square fa-2x"></i> JavaScript Code Quiz</h1>
+                <h3 class="mt-4 mb-3">Test your JavaScript fundamentals</h3>
+                <div class="container">
+                    <a href="./html/quiz.html" class="btn btn-primary mx-2">Start Quiz</a>
+                    <a href="./html/highscores.html" class="btn btn-outline-primary mx-2">View High Scores</a>
+                </div>
+            </section>
+        </div>
 
-        <section class="flex-col">
-            <a href="./html/quiz.html" class="btn-link">Start Quiz</a>
-            <a href="./html/highscores.html" class="btn-link">View High Scores</a>
-        </section>
-
-        <section class="description center">
-            <ul>
-                <li>You have until the timer gets to zero to complete the quiz</li>
-                <li>Scores are based on number of correct answers and time to complete</li>
-                <li>Incorrect answers will reduce the remaining time by five seconds</li>
+        <section class="container contain-max">
+            <ul class="list-group text-center">
+                <li class="list-group-item">You have until the timer gets to zero to complete the quiz</li>
+                <li class="list-group-item">Scores are based on number of correct answers and time to complete</li>
+                <li class="list-group-item">Incorrect answers will reduce the remaining time by five seconds</li>
             </ul>
         </section>
     </main>
